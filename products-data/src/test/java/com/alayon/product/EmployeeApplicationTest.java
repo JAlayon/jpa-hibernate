@@ -1,30 +1,32 @@
 package com.alayon.product;
 
-import com.alayon.product.entities.Employee;
-import com.alayon.product.repository.EmployeeRepository;
+import java.util.Arrays;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Arrays;
+import com.alayon.product.entities.Employee;
+import com.alayon.product.repository.EmployeeRepository;
 
 @SpringBootTest
 public class EmployeeApplicationTest {
 
-    @Autowired
-    EmployeeRepository employeeRepository;
+	@Autowired
+	EmployeeRepository employeeRepository;
 
-    @Test
-    public void testTableGenerator(){
-        var employee1 = new Employee();
-        employee1.setName("Employee-1");
-        var employee2 = new Employee();
-        employee2.setName("Employee-2");
+	@Test
+	public void testTableGenerator() {
+		final var employee1 = new Employee();
+		employee1.setName("Employee-1");
+		final var employee2 = new Employee();
+		employee2.setName("Employee-2");
+		final var employee3 = new Employee();
+		employee3.setName("Employee-3");
 
-        final Iterable<Employee> employees = employeeRepository.saveAll(Arrays.asList(employee1, employee2));
+		final Iterable<Employee> employees = employeeRepository.saveAll(Arrays.asList(employee1, employee2, employee3));
 
-        employees.forEach(e -> System.out.println(e));
+		employees.forEach(e -> System.out.println(e));
 
-
-    }
+	}
 }
